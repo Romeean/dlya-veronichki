@@ -1,5 +1,5 @@
 export default function Page({params}: {params: {testId: string[]}}){
   return(
-    <p>CurrentPage {params.testId}</p>
+    <p>Текущая страница: {params.testId}</p>
   )
 }   
