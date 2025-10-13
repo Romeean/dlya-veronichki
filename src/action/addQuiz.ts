@@ -13,5 +13,5 @@ export function addQuiz(formData: FormData){
   const tasks = JSON.parse(formData.get("tasks") as string) as TaskType[]
 
   
-  return quiz
+  return 0
 }

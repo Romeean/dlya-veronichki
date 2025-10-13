@@ -4,6 +4,7 @@ async function main() {
   const quiz = await prisma.quiz.create({
     data: {
       title: "Математичний тест на додавання",
+      href: "87USHGSAIFNA"
     },
   })
 
@@ -11,6 +12,7 @@ async function main() {
     data: {
       question: "Скільки буде 5 + 12?",
       answers: ["17", "52", "18", "15"],
+      correctAnswer: "17",
       quiz: {
         connect: { id: quiz.id },
       },

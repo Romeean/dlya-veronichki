@@ -1,5 +1,5 @@
 import { getQuizzes } from "@/action/getQuizzes"
-
+import Link from "next/link"
 
 
 export default async function Page(){
@@ -8,12 +8,15 @@ export default async function Page(){
   return(
     <div>
       <h1>Страница с тестами</h1>
-
-      {/* {quizzes.map((element, index) => {
-        <h1 key={index}>
-          {element.title}
-        </h1>
-      })} */}
+      {quizzes.map((element) => {
+        return(
+          <div key={element.id}>
+            <Link href={`/math-tests/${element.href}`}>
+              <h1>{element.title}</h1>
+            </Link>
+          </div>
+        )
+      })}
     </div>
   )
 }

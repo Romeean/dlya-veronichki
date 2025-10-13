@@ -16,14 +16,16 @@ datasource db {
 model Quiz {
   id       Int     @id @default(autoincrement())
   title    String
+  href     String?
   tasks    Task[]   
 }
 
 model Task {
-  id        Int      @id @default(autoincrement())
-  question  String
-  answers   String[]
-  quizId    Int
-  quiz      Quiz     @relation(fields: [quizId], references: [id])
+  id            Int      @id @default(autoincrement())
+  question      String
+  answers       String[]
+  correctAnswer String  @default("nothing")
+  quizId        Int
+  quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
 
