@@ -18,6 +18,15 @@ async function main() {
       },
     },
   })
+  
+  await prisma.task.create({
+  data: {
+    question: "10 + 7 = ?",
+    answers: ["18", "17", "19", "16"],
+    correctAnswer: "17",
+    quiz: { connect: { id: quiz.id } },
+  },
+  })
 
   console.log("✅ Данные успешно добавлены!")
 }
