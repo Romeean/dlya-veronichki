@@ -4,7 +4,7 @@ async function main() {
   const quiz = await prisma.quiz.create({
     data: {
       title: "Математичний тест на додавання",
-      href: "87USHGSAIFNA"
+      href: "u9a9ouihf"
     },
   })
 
