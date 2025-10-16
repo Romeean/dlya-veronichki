@@ -11,8 +11,8 @@ async function main() {
   await prisma.task.create({
     data: {
       question: "Скільки буде 5 + 12?",
-      answers: ["17", "52", "18", "15"],
-      correctAnswer: "17",
+      answers: ["17", "16", "18", "15"],
+      correctAnswer: "0",
       quiz: {
         connect: { id: quiz.id },
       },
@@ -21,9 +21,9 @@ async function main() {
   
   await prisma.task.create({
   data: {
-    question: "10 + 7 = ?",
-    answers: ["18", "17", "19", "16"],
-    correctAnswer: "17",
+    question: "Скільки буде 7 + 6?",
+    answers: ["11", "14", "12", "13"],
+    correctAnswer: "3",
     quiz: { connect: { id: quiz.id } },
   },
   })
