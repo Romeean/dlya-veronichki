@@ -11,11 +11,12 @@ type CurrentTask = {
 }
 
 
-export function ClientTask({index, totalTask, currentTask, href, rightAnswer }: {
+export function ClientTask({index, totalTask, currentTask, href, hrefCategory, rightAnswer }: {
   index: number,
   totalTask: number,
   currentTask: CurrentTask,
   href: string | null,
+  hrefCategory: string | null
   rightAnswer: string
 
 }){
@@ -50,24 +51,24 @@ export function ClientTask({index, totalTask, currentTask, href, rightAnswer }: 
       {
         index >= 1 && index < totalTask && (
           <div>
-            <Link onClick={() => handleLocalSave()} href={`/math-tests/${href}/${index + 1}`}>Наступне завдання</Link>
+            <Link onClick={() => handleLocalSave()} href={`/${hrefCategory}/${href}/${index + 1}`}>Наступне завдання</Link>
           </div>
         )
       }
       {
         index > 1 && (
-            <Link href={`/math-tests/${href}/${index - 1}`}>Минуле завдання</Link>
+            <Link href={`/${hrefCategory}/${href}/${index - 1}`}>Минуле завдання</Link>
         )
       }
       {
         index === totalTask && (
-          <Link onClick={() => handleLocalSave()} href={`/math-tests/${href}/summary`}>Закінчити тест</Link>
+          <Link onClick={() => handleLocalSave()} href={`/${hrefCategory}/${href}/summary`}>Закінчити тест</Link>
         ) 
       }
       <hr></hr>
       {
         Array.from({length: totalTask}).map((_, index) => (
-          <Link key={index} className="max-w-4 max-h-6 border" href={`/math-tests/${href}/${index + 1}`}>{index + 1}</Link>
+          <Link key={index} className="max-w-4 max-h-6 border" href={`/${hrefCategory}/${href}/${index + 1}`}>{index + 1}</Link>
         ))
       }
     </div>

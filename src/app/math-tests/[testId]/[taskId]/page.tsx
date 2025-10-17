@@ -7,6 +7,7 @@ export default async function Page({params}: {params: {taskId: string}}){
   const quizzes = await getQuizzes();
   const currentTask = quizzes[0].tasks[index - 1];
   const href = quizzes[0].href;
+  const hrefCategory = quizzes[0].hrefCategory
   const totalTask = quizzes[0].tasks.length;
   const rightAnswer = quizzes[0].tasks[index - 1].correctAnswer;
 
@@ -18,6 +19,7 @@ export default async function Page({params}: {params: {taskId: string}}){
     <ClientTask
       index={index}
       href={href}
+      hrefCategory={hrefCategory}
       totalTask={totalTask}
       currentTask={currentTask}
       rightAnswer={rightAnswer}

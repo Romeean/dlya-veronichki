@@ -2,15 +2,17 @@ import { getQuizzes } from "@/action/getQuizzes"
 import Link from "next/link"
 
 
+
 export default async function Page(){
   const quizzes = await getQuizzes()
+  const hrefCategory = quizzes[0].hrefCategory
+  
   return(
-    <div>
-      <h1>Страница с тестами</h1>
+    <div className="flex items-center min-h-screen flex-col max-w-5xl ">
       {quizzes.map((element) => {
         return(
-          <div key={element.id}>
-            <Link href={`/math-tests/${element.href}`}>
+          <div className="rounded-2xl border min-h-32 p-4" key={element.id}>
+            <Link href={`/${hrefCategory}/${element.href}`}>
               <h1>{element.title}</h1>
             </Link>
           </div>

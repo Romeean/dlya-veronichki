@@ -14,10 +14,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model Quiz {
-  id       Int     @id @default(autoincrement())
-  title    String
-  href     String?
-  tasks    Task[]   
+  id            Int     @id @default(autoincrement())
+  title         String
+  href          String?
+  hrefCategory  String?
+  tasks         Task[]   
 }
 
 model Task {

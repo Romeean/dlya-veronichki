@@ -4,7 +4,8 @@ async function main() {
   const quiz = await prisma.quiz.create({
     data: {
       title: "Математичний тест на додавання",
-      href: "u9a9ouihf"
+      href: "u9a9ouihf",
+      hrefCategory: "math-tests"
     },
   })
 
@@ -27,6 +28,60 @@ async function main() {
     quiz: { connect: { id: quiz.id } },
   },
   })
+  
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 9 + 8?",
+    answers: ["15", "16", "17", "18"],
+    correctAnswer: "2", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
+
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 5 + 9?",
+    answers: ["13", "14", "15", "12"],
+    correctAnswer: "1", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
+
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 12 + 3?",
+    answers: ["14", "16", "15", "13"],
+    correctAnswer: "2", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
+
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 4 + 7?",
+    answers: ["9", "10", "11", "12"],
+    correctAnswer: "2", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
+
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 10 + 8?",
+    answers: ["17", "19", "18", "16"],
+    correctAnswer: "2", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
+
+await prisma.task.create({
+  data: {
+    question: "Скільки буде 6 + 6?",
+    answers: ["11", "12", "13", "10"],
+    correctAnswer: "1", 
+    quiz: { connect: { id: quiz.id } },
+  },
+})
 
   console.log("✅ Данные успешно добавлены!")
 }

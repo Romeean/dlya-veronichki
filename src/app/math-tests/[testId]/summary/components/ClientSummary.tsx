@@ -26,11 +26,8 @@ export function ClientSummary({href, totalTask}: {href: string, totalTask: numbe
   // Object.keys(obj) - превращает объект c ключами, в массив ключей
   // Object.values(obj) - превращает объект значений и ключей, в массив объектов внутри со значениями
   // Object.entries(obj) - прерващает объект ключ значение, в массив объектов с ключ значением
-
   // это позволяет нам удобно пользоваться данными которые лежат внутри объекта, с помощью методов(filter, reduce, map)
-  console.log(Object.keys(tasks))
-  console.log(Object.values(tasks))
-  console.log(Object.entries(tasks))
+ 
 
 
   return(
