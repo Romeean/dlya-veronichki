@@ -4,7 +4,6 @@ import Link from "next/link"
 
 export default async function Page(){
   const quizzes = await getQuizzes()
-  console.log(quizzes[0].tasks[0].answers[3])
   return(
     <div>
       <h1>Страница с тестами</h1>

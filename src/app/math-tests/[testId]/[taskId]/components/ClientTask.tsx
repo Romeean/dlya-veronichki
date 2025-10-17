@@ -21,12 +21,15 @@ export function ClientTask({index, totalTask, currentTask, href, rightAnswer }: 
 }){
   const [userAnswer, setUserAnswer] = useState<number>()
   function handleLocalSave(){
-    localStorage.setItem(index.toString(), JSON.stringify({
+    
+    const id = index.toString()+ "-" + href;
+
+    localStorage.setItem(id, JSON.stringify({
       userAnswer,
-      arrayOfAnswers: currentTask,
       rightAnswer: parseInt(rightAnswer)
     }))
   }
+  
 
   return(
     <div>
@@ -45,20 +48,28 @@ export function ClientTask({index, totalTask, currentTask, href, rightAnswer }: 
           </div>
       ))}
       {
-        index >= 1 && index < totalTask ? (
+        index >= 1 && index < totalTask && (
           <div>
             <Link onClick={() => handleLocalSave()} href={`/math-tests/${href}/${index + 1}`}>Наступне завдання</Link>
           </div>
-        ) : null
+        )
       }
       {
-        index > 1 ? (
+        index > 1 && (
             <Link href={`/math-tests/${href}/${index - 1}`}>Минуле завдання</Link>
-        ) : null
+        )
       }
-      {index === totalTask ? (
-        <Link onClick={() => handleLocalSave()} href={`/math-tests/summary`}>Закінчити тест</Link>
-      ) : null}
+      {
+        index === totalTask && (
+          <Link onClick={() => handleLocalSave()} href={`/math-tests/${href}/summary`}>Закінчити тест</Link>
+        ) 
+      }
+      <hr></hr>
+      {
+        Array.from({length: totalTask}).map((_, index) => (
+          <Link key={index} className="max-w-4 max-h-6 border" href={`/math-tests/${href}/${index + 1}`}>{index + 1}</Link>
+        ))
+      }
     </div>
   )
 }

@@ -24,7 +24,7 @@ model Task {
   id            Int      @id @default(autoincrement())
   question      String
   answers       String[]
-  correctAnswer String  @default("nothing")
+  correctAnswer String   @default("nothing")
   quizId        Int
   quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
