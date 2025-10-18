@@ -46,13 +46,7 @@ export function ClientTask({
       <h1>{currentTask.question}</h1>
       {currentTask.answers.map((element: string, index: number) => (
         <div key={index} className="flex flex-row gap-2">
-          <input
-            onChange={() => setUserAnswer(index)}
-            value={userAnswer}
-            type="radio"
-            id={`${element}-answer`}
-            name="answer"
-          />
+          <input onChange={() => setUserAnswer(index)} value={userAnswer} type="radio" id={`${element}-answer`} name="answer" />
           <label htmlFor={`${element}-answer`}>{element}</label>
         </div>
       ))}
@@ -71,11 +65,7 @@ export function ClientTask({
       )}
       <hr></hr>
       {Array.from({ length: totalTask }).map((_, index) => (
-        <Link
-          key={index}
-          className="max-w-4 max-h-6 border"
-          href={`/${hrefCategory}/${href}/${index + 1}`}
-        >
+        <Link key={index} className="max-w-4 max-h-6 border" href={`/${hrefCategory}/${href}/${index + 1}`}>
           {index + 1}
         </Link>
       ))}

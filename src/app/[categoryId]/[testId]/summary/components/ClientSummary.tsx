@@ -19,9 +19,7 @@ export function ClientSummary({ href, totalTask }: { href: string; totalTask: nu
       }
     }
   }
-  const correctAnswers = Object.values(tasks).filter(
-    (task: any) => task.userAnswer === task.rightAnswer,
-  ).length; // получаем только значения из объекта, и делаем из них массив значений
+  const correctAnswers = Object.values(tasks).filter((task: any) => task.userAnswer === task.rightAnswer).length; // получаем только значения из объекта, и делаем из них массив значений
 
   // Object.keys(obj) - превращает объект c ключами, в массив ключей
   // Object.values(obj) - превращает объект значений и ключей, в массив объектов внутри со значениями
@@ -41,11 +39,7 @@ export function ClientSummary({ href, totalTask }: { href: string; totalTask: nu
       {Object.entries(tasks).map(([key, value]) => (
         <div className="flex flex-row gap-4" key={key}>
           Завдання номер {key}:{" "}
-          {value?.userAnswer === value?.rightAnswer ? (
-            <p>Відповідь правильна</p>
-          ) : (
-            <p>Відповідь неправильна</p>
-          )}
+          {value?.userAnswer === value?.rightAnswer ? <p>Відповідь правильна</p> : <p>Відповідь неправильна</p>}
         </div>
       ))}
     </div>
