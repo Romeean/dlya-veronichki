@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function Block({
   href,
@@ -6,12 +6,12 @@ export function Block({
   subTitle,
   color,
 }: {
-  href: string
-  title: string
-  subTitle: string
-  color: string
+  href: string;
+  title: string;
+  subTitle: string;
+  color: string;
 }) {
-  const isHex = color.startsWith("#")
+  const isHex = color.startsWith("#");
 
   return (
     <Link href={href}>
@@ -25,5 +25,5 @@ export function Block({
         <p className="text-base opacity-90">{subTitle}</p>
       </section>
     </Link>
-  )
+  );
 }

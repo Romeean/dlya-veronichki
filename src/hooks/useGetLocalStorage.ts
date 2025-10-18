@@ -1,3 +1,3 @@
-export function useGetLocalStorage(){
-  return
+export function useGetLocalStorage() {
+  return;
 }
