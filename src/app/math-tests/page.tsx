@@ -9,13 +9,13 @@ export default async function Page(){
   
   return(
     <div className="flex items-center min-h-screen flex-col max-w-5xl ">
-      {quizzes.map((element) => {
+      {quizzes.map((element: any) => {
         return(
-          <div className="rounded-2xl border min-h-32 p-4" key={element.id}>
-            <Link href={`/${hrefCategory}/${element.href}`}>
+          <Link href={`/${hrefCategory}/${element.href}`} className="rounded-2xl border min-h-32 p-4" key={element.id}>
+            <div>
               <h1>{element.title}</h1>
-            </Link>
-          </div>
+            </div>
+          </Link>
         )
       })}
     </div>

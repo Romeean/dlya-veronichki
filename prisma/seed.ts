@@ -8,7 +8,14 @@ async function main() {
       hrefCategory: "math-tests"
     },
   })
-
+  const logicQuiz = await prisma.quiz.create({
+    data: {
+      title: "Логічний тест на розвиток мислення",
+      href: "ijsdunrgnoe",
+      hrefCategory: "logic-tests"
+    }
+  })
+  
   await prisma.task.create({
     data: {
       question: "Скільки буде 5 + 12?",
@@ -19,6 +26,7 @@ async function main() {
       },
     },
   })
+
   
   await prisma.task.create({
   data: {
