@@ -1,14 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 
-export function ClientSummary({ href, totalTask }: { href: string; totalTask: number }) {
+export function ClientSummary({ testId, totalTask }: { testId: string; totalTask: number }) {
   const [tasks, setTasks] = useState<object>({});
   useEffect(() => {
     forEachKey();
   }, []);
   function forEachKey() {
     for (let index = 0; index < localStorage.length; index++) {
-      let item = localStorage.getItem(index.toString() + "-" + href);
+      let item = localStorage.getItem(index.toString() + "-" + testId);
       let currentAnswer: null | string = null; // решение проблемы с типизацией
       if (item) {
         currentAnswer = JSON.parse(item); // парсим строку в объект

@@ -4,8 +4,8 @@ async function main() {
   const quiz = await prisma.quiz.create({
     data: {
       title: "Математичний тест на додавання",
-      href: "u9a9ouihf",
-      hrefCategory: "math-tests",
+      testId: "u9a9ouihf",
+      categoryId: "math-tests",
     },
   });
 
@@ -13,8 +13,8 @@ async function main() {
   const logicQuiz = await prisma.quiz.create({
     data: {
       title: "Логічний тест на розвиток",
-      href: "dsuofighwsf",
-      hrefCategory: "logic-tests",
+      testId: "dsuofighwsf",
+      categoryId: "logic-tests",
     },
   });
   // математические задания

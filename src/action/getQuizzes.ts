@@ -1,9 +1,9 @@
 "use server";
 import prisma from "@/lib/prisma";
 
-export async function getQuizzes(id?: number) {
+export async function getQuizzes(testId?: string, categoryId?: string) {
   const quizzes = await prisma.quiz.findMany({
-    where: {},
+    where: { testId, categoryId },
     include: {
       tasks: true,
     },
