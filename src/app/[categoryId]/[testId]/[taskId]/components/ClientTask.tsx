@@ -39,36 +39,60 @@ export function ClientTask({
   }
 
   return (
-    <div>
-      <p>
-        Завдання номер: {index} з {totalTask}
-      </p>
-      <h1>{currentTask.question}</h1>
-      {currentTask.answers.map((element: string, index: number) => (
-        <div key={index} className="flex flex-row gap-2">
-          <input onChange={() => setUserAnswer(index)} value={userAnswer} type="radio" id={`${element}-answer`} name="answer" />
-          <label htmlFor={`${element}-answer`}>{element}</label>
+    <div className="w-full min-h-screen flex justify-center items-center ">
+      <div className="max-w-5xl w-full">
+        <div className="flex flex-row">
+          <div className="max-w-3xl w-full">
+            <p>
+              Завдання номер: {index} з {totalTask}
+            </p>
+            <h1>{currentTask.question}</h1>
+            <div className="w-full grid grid-cols-2 gap-2">
+              {currentTask.answers.map((element: string, index: number) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center gap-2 w-40 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
+                  onClick={() => setUserAnswer(index)}
+                >
+                  <input type="radio" id={`${element}-answer`} name="answer" checked={userAnswer === index} className="hidden" />
+                  <label htmlFor={`${element}-answer`} className="text-center">
+                    {element}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {index >= 1 && index < totalTask && (
+              <div>
+                <Link
+                  className="rounded-2xl border p-2"
+                  onClick={() => handleLocalSave()}
+                  href={`/${categoryId}/${testId}/${index + 1}`}
+                >
+                  Наступне завдання
+                </Link>
+              </div>
+            )}
+            {index > 1 && <Link href={`/${categoryId}/${testId}/${index - 1}`}>Минуле завдання</Link>}
+            {index === totalTask && (
+              <Link
+                className="max-w-24 max-h-8 w-full h-full"
+                onClick={() => handleLocalSave()}
+                href={`/${categoryId}/${testId}/summary`}
+              >
+                Закінчити тест
+              </Link>
+            )}
+          </div>
+          <div>
+            {Array.from({ length: totalTask }).map((_, index) => (
+              <Link key={index} className="px-2 py-0.5 border border-gray-400" href={`/${categoryId}/${testId}/${index + 1}`}>
+                {index + 1}
+              </Link>
+            ))}
+          </div>
         </div>
-      ))}
-      {index >= 1 && index < totalTask && (
-        <div>
-          <Link onClick={() => handleLocalSave()} href={`/${categoryId}/${testId}/${index + 1}`}>
-            Наступне завдання
-          </Link>
-        </div>
-      )}
-      {index > 1 && <Link href={`/${categoryId}/${testId}/${index - 1}`}>Минуле завдання</Link>}
-      {index === totalTask && (
-        <Link onClick={() => handleLocalSave()} href={`/${categoryId}/${testId}/summary`}>
-          Закінчити тест
-        </Link>
-      )}
-      <hr></hr>
-      {Array.from({ length: totalTask }).map((_, index) => (
-        <Link key={index} className="max-w-4 max-h-6 border" href={`/${categoryId}/${testId}/${index + 1}`}>
-          {index + 1}
-        </Link>
-      ))}
+      </div>
     </div>
   );
 }

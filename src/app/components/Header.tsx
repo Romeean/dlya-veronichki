@@ -14,7 +14,7 @@ export function Header() {
           <nav>
             <ul className="flex items-center gap-4 text-lg">
               <li>
-                <Link href="/math-tests" className="hover:text-blue-600 transition">
+                <Link href="/math-tests" className="hover:text-blue-600 transition font-base">
                   Тесты
                 </Link>
               </li>
