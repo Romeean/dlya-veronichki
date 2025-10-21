@@ -26,6 +26,7 @@ export function ClientTask({
   rightAnswer: string;
 }) {
   const [userAnswer, setUserAnswer] = useState<number>();
+  const [toggle, setToggle] = useState<boolean>(false);
   function handleLocalSave() {
     const id = index.toString() + "-" + testId;
 
@@ -51,10 +52,12 @@ export function ClientTask({
               {currentTask.answers.map((element: string, index: number) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center gap-2 w-40 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
-                  onClick={() => setUserAnswer(index)}
+                  className="w-full flex items-center justify-center gap-2 w-40 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
+                  onClick={() => {
+                    setUserAnswer(index)
+                    setToggle((prev) => !prev);
+                  }}
                 >
-                  <input type="radio" id={`${element}-answer`} name="answer" checked={userAnswer === index} className="hidden" />
                   <label htmlFor={`${element}-answer`} className="text-center">
                     {element}
                   </label>
