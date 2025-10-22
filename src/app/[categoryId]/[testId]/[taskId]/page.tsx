@@ -5,10 +5,10 @@ export default async function Page({ params }: { params: { categoryId: string; t
   const awaitedParams = await params;
 
   const quizzes = await getQuizzes(awaitedParams.testId);
-  const index = parseInt(awaitedParams.taskId, 10);
-  const currentTask = quizzes[0].tasks[index - 1];
+  const taskId = parseInt(awaitedParams.taskId, 10);
+  const currentTask = quizzes[0].tasks[taskId - 1];
   const totalTask = quizzes[0].tasks.length;
-  const rightAnswer = quizzes[0].tasks[index - 1].correctAnswer;
+  const rightAnswer = quizzes[0].tasks[taskId - 1].correctAnswer;
 
   if (!currentTask) {
     return <div>Такого тесту не існує</div>;
@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { categoryId: string; t
 
   return (
     <ClientTask
-      index={index}
+      taskId={taskId}
       testId={awaitedParams.testId}
       categoryId={awaitedParams.categoryId}
       totalTask={totalTask}
