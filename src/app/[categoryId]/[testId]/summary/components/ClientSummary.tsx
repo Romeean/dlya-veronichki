@@ -2,45 +2,39 @@
 import { useState, useEffect } from "react";
 
 export function ClientSummary({ testId, totalTask }: { testId: string; totalTask: number }) {
-  const [tasks, setTasks] = useState<object>({});
+  const [tasks, setTasks] = useState<Record<string, any>>({});
   useEffect(() => {
-    forEachKey();
-    
-  }, []);
-  function forEachKey() {
-    for (let index = 0; index < localStorage.length; index++) {
-      let item = localStorage.getItem(index.toString() + "-" + testId);
-      let currentAnswer: null | string = null; // решение проблемы с типизацией
-      if (item) {
-        currentAnswer = JSON.parse(item); // парсим строку в объект
-        setTasks((prev) => ({
-          ...prev, // подтягиваем все пары ключ значений которые были раньше
-          [index.toString()]: currentAnswer, // дабовляем новое ключ значение в состояние tasks
-        }));
+    const results: Record<string, any> = {}; 
+    for(let index = 1; index <= localStorage.length; index++){
+      
+      let pathToTest = `${index.toString() + "-" + testId}`
+      const test = localStorage.getItem(pathToTest);
+      if(test){
+        const parsed = JSON.parse(test);
+        results[index] = parsed
       }
     }
-  }
-  const correctAnswers = Object.values(tasks).filter((task: any) => task.userAnswer === task.rightAnswer).length; // получаем только значения из объекта, и делаем из них массив значений
+    setTasks(results);
+  }, []);
+  console.log(tasks)
 
-  // Object.keys(obj) - превращает объект c ключами, в массив ключей
-  // Object.values(obj) - превращает объект значений и ключей, в массив объектов внутри со значениями
-  // Object.entries(obj) - прерващает объект ключ значение, в массив объектов с ключ значением
-  // это позволяет нам удобно пользоваться данными которые лежат внутри объекта, с помощью методов(filter, reduce, map)
-
+  
+  const correctAnswers = Object.values(tasks).filter((task: any) => task.index === task.rightAnswer).length;
+  
   return (
     <div>
       {Object.keys(tasks).length === 0 ? (
         <p>Немає відповідей на цей тест</p>
       ) : (
         <p>
-          з {totalTask} задач вірних відповідей {correctAnswers}
+          з {Object.keys(tasks).length} задач вірних відповідей {correctAnswers}
         </p>
       )}
 
       {Object.entries(tasks).map(([key, value]) => (
         <div className="flex flex-row gap-4" key={key}>
           Завдання номер {key}:{" "}
-          {value?.userAnswer === value?.rightAnswer ? <p>Відповідь правильна</p> : <p>Відповідь неправильна</p>}
+          {value?.index === value?.rightAnswer ? <p>Відповідь правильна</p> : <p>Відповідь неправильна</p>}
         </div>
       ))}
     </div>

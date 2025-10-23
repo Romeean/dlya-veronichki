@@ -4,8 +4,6 @@ import { NextTask } from "./NextTask";
 import { PreviousTask } from "./PreviousTask";
 import { FinishTest } from "./FinishTest";
 import Link from "next/link";
-import test from "node:test";
-
 
 type CurrentTask = {
   question: string;
@@ -43,7 +41,6 @@ export function ClientTask({
       }),
     );
   }
-  
 
   useEffect(() => {
     const item = localStorage.getItem(id);
@@ -51,7 +48,6 @@ export function ClientTask({
       const parsed = JSON.parse(item);
       setUserAnswer(parsed.index);
     }
-    const currentSession = Date.now()
   }, [id]);
 
   return (
@@ -63,37 +59,33 @@ export function ClientTask({
               Завдання номер: {taskId} з {totalTask}
             </p>
             <h1>{currentTask.question}</h1>
-            <div className="w-full grid grid-cols-2 gap-2">
+            <div className="w-full  grid grid-cols-2 gap-2">
               {currentTask.answers.map((element: string, index: number) => (
                 <div
                   key={index}
-                  className="w-full flex items-center justify-center gap-2 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
+                  className="w-full relative flex items-center justify-center gap-2 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
                   onClick={() => {
                     handleLocalStorage(index);
-                  }}
-                  style={{
-                    backgroundColor: userAnswer === index ? "#22c55e" : "#e5e7eb",
                   }}
                 >
                   <label htmlFor={`${element}-answer`} className="text-center">
                     {element}
                   </label>
+                  <div className="absolute top-3 right-6 w-6 h-6 rounded-[8px] color-transparent bg-transparent border-gray-400 border ">
+                    {userAnswer === index ? (
+                      <div className="w-2 h-4 border-r-2 absolute right-1.5 top-0.5 border-b-2 border-green-500 rotate-40" />
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
             <div className="grid grid-cols-2 w-full pt-2 gap-2">
-              {taskId >= 1 && taskId < totalTask && (
-                <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />
-              )}
-              {taskId > 1 && (
-                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
-              )}
-              {taskId === totalTask && (
-                <FinishTest categoryId={categoryId} testId={testId} />
-              )}
+              {taskId >= 1 && taskId < totalTask && <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />}
+              {taskId > 1 && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
+              {taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}
             </div>
-
-              
           </div>
 
           <div>
