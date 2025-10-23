@@ -1,6 +1,11 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { NextTask } from "./NextTask";
+import { PreviousTask } from "./PreviousTask";
+import { FinishTest } from "./FinishTest";
+import Link from "next/link";
+import test from "node:test";
+
 
 type CurrentTask = {
   question: string;
@@ -27,7 +32,7 @@ export function ClientTask({
 }) {
   const [userAnswer, setUserAnswer] = useState<number>();
   const id = taskId.toString() + "-" + testId;
-  
+
   function handleLocalStorage(index: number) {
     setUserAnswer(index);
     localStorage.setItem(
@@ -38,6 +43,7 @@ export function ClientTask({
       }),
     );
   }
+  
 
   useEffect(() => {
     const item = localStorage.getItem(id);
@@ -45,6 +51,7 @@ export function ClientTask({
       const parsed = JSON.parse(item);
       setUserAnswer(parsed.index);
     }
+    const currentSession = Date.now()
   }, [id]);
 
   return (
@@ -76,22 +83,17 @@ export function ClientTask({
             </div>
             <div className="grid grid-cols-2 w-full pt-2 gap-2">
               {taskId >= 1 && taskId < totalTask && (
-                <Link className="rounded-[12px] bg-[#e5e7eb] p-2 w-full" href={`/${categoryId}/${testId}/${taskId + 1}`}>
-                  Наступне завдання
-                </Link>
+                <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />
               )}
               {taskId > 1 && (
-                <Link className="rounded-[12px] bg-[#e5e7eb] p-2 w-full" href={`/${categoryId}/${testId}/${taskId - 1}`}>
-                  Минуле завдання
-                </Link>
+                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
+              )}
+              {taskId === totalTask && (
+                <FinishTest categoryId={categoryId} testId={testId} />
               )}
             </div>
 
-            {taskId === totalTask && (
-              <Link className="max-w-24 max-h-8 w-full h-full" href={`/${categoryId}/${testId}/summary`}>
-                Закінчити тест
-              </Link>
-            )}
+              
           </div>
 
           <div>

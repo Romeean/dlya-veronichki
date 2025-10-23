@@ -5,6 +5,7 @@ export function ClientSummary({ testId, totalTask }: { testId: string; totalTask
   const [tasks, setTasks] = useState<object>({});
   useEffect(() => {
     forEachKey();
+    
   }, []);
   function forEachKey() {
     for (let index = 0; index < localStorage.length; index++) {
