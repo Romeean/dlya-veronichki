@@ -7,7 +7,6 @@ export default async function Page({ params }: { params: { categoryId: string } 
   const quizzes = await getQuizzes();
   return (
     <div className="min-h-screen max-w-5xl mx-auto ">
-      {/* <Header /> */}
       <p>
         В цій категорії ми детально будемо вивчати на практиці завдання з математики, у кожного теста, є своя складність ,
         подивись на зірочки, чим більше зірочок - тим важче.

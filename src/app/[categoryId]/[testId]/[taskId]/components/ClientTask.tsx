@@ -51,7 +51,7 @@ export function ClientTask({
   }, [id]);
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center ">
+    <div className="w-full min-h-screen flex justify-center items-center">
       <div className="max-w-5xl w-full">
         <div className="flex flex-row">
           <div className="max-w-3xl w-full">
