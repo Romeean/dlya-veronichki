@@ -7,17 +7,19 @@ export default async function Page({ params }: { params: { categoryId: string; t
   const categoryId = awaitedParams.categoryId;
   const testId = awaitedParams.testId;
 
-  const quizzes = await getQuizzes(testId);
-  const currentQuiz = quizzes[0]
-  console.log(quizzes)
-
+  const quizzes = await getQuizzes({ testId });
+  const currentQuiz = quizzes[0];
+  console.log(quizzes);
 
   return (
-    <div>
-      <p>{currentQuiz.title}</p>
-      <p>Кількість питань: {currentQuiz.tasks.length}</p>
-      <Link href={`/${categoryId}/${testId}/1`}>Почати тест </Link>
-
+    <div className="w-full min-h-screen flex justify-center items-center">
+      <div className="max-w-5xl">
+        <p className="text-2xl">{currentQuiz.title}</p>
+        <p className="text-2xl">Кількість питань: {currentQuiz.tasks.length}</p>
+        <Link className="border rounded-[4px] p-1.5" href={`/${categoryId}/${testId}/1`}>
+          Почати тест{" "}
+        </Link>
+      </div>
     </div>
   );
 }

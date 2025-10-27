@@ -83,9 +83,15 @@ export function ClientTask({
             </div>
             <div className="grid grid-cols-2 w-full pt-2 gap-2">
               {taskId >= 1 && taskId < totalTask && <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />}
-              {taskId > 1 && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
-              {taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}
+              {taskId > 1 && taskId !== totalTask && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
+              {taskId === totalTask && (
+                <div className="invisible" />
+              )}
+              {taskId === totalTask && (
+                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
+              )}
             </div>
+            <div className="w-full pt-2">{taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}</div>
           </div>
 
           <div>

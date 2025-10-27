@@ -23,7 +23,7 @@ export function ClientSummary({ testId, totalTask }: { testId: string; totalTask
   const correctAnswers = Object.values(tasks).filter((task: any) => task.index === task.rightAnswer).length;
 
   return (
-    <div className="min-h-screen w-full flex justify-center">
+    <div className="min-h-screen w-full flex justify-center items-center">
       <div className="max-w-5xl">
         {Object.keys(tasks).length === 0 ? (
           <p>Немає відповідей на цей тест</p>
@@ -39,7 +39,7 @@ export function ClientSummary({ testId, totalTask }: { testId: string; totalTask
               key={key}
             >
               <p className="text-2xl">Завдання номер {key}: </p>
-              <TestResults key={key} number={key} value={value} />
+              <TestResults key={key} value={value} />
             </div>
           ))}
         </div>

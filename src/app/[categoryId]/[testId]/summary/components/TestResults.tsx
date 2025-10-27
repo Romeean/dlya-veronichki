@@ -1,4 +1,4 @@
-export function TestResults({ number, value }: { number: string; value: any }) {
+export function TestResults({ value }: { value: any }) {
   const isAnswered: boolean = value != "none" && value.index !== undefined && value.rightAnswer !== undefined;
   const isCorrect: boolean = isAnswered && value.index === value.rightAnswer;
   const isWrong: boolean = isAnswered && !isCorrect;

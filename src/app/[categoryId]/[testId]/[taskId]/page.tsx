@@ -3,8 +3,8 @@ import { ClientTask } from "./components/ClientTask";
 
 export default async function Page({ params }: { params: { categoryId: string; testId: string; taskId: string } }) {
   const awaitedParams = await params;
-
-  const quizzes = await getQuizzes(awaitedParams.testId);
+  const testId = awaitedParams.testId;
+  const quizzes = await getQuizzes({ testId });
   const taskId = parseInt(awaitedParams.taskId, 10);
   const currentTask = quizzes[0].tasks[taskId - 1];
   const totalTask = quizzes[0].tasks.length;

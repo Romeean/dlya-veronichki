@@ -6,6 +6,7 @@ async function main() {
       title: "Математичний тест на додавання",
       testId: "u9a9ouihf",
       categoryId: "math-tests",
+      difficulty: 1,
     },
   });
 
@@ -15,6 +16,7 @@ async function main() {
       title: "Логічний тест на розвиток",
       testId: "dsuofighwsf",
       categoryId: "logic-tests",
+      difficulty: 2,
     },
   });
   // математические задания
