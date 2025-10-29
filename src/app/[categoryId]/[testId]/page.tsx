@@ -9,7 +9,6 @@ export default async function Page({ params }: { params: { categoryId: string; t
 
   const quizzes = await getQuizzes({ testId });
   const currentQuiz = quizzes[0];
-  console.log(quizzes);
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center">

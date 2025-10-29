@@ -23,10 +23,10 @@ export function ClientCatalogOfTests({ quizzes }: ClientCatalogOfTestsProps) {
             подивись на зірочки, чим більше зірочок - тим важче.
           </h1>
         </div>
-        <div id="tests">
+        <div id="tests" className="">
           {quizzes.map((element, index) => (
             <Link key={index} href={`/${element.categoryId}/${element.testId}`} className="rounded-2xl  min-h-32 p-4">
-              <div className="rounded-2xl p-6 text-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-transform duration-200 hover:scale-[1.02] hover:shadow-[0_6px_25px_rgba(0,0,0,0.12)] cursor-pointer flex flex-col justify-center h-48 w-full">
+              <div className="rounded-2xl p-6 text-white bg-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-transform duration-200 hover:scale-[1.02] hover:shadow-[0_6px_25px_rgba(0,0,0,0.12)] cursor-pointer flex flex-col justify-center h-48 w-full">
                 <h1 className="text-black">{element.title}</h1>
                 <StarField difficulty={element.difficulty} />
               </div>
