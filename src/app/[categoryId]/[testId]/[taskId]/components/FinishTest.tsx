@@ -3,7 +3,7 @@ import Link from "next/link";
 export function FinishTest({ categoryId, testId }: { categoryId: string | null; testId: string | null }) {
   return (
     <Link
-      className="block rounded-[12px] bg-[#e5e7eb] p-2 w-full hover:bg-gray-300 transition-all"
+      className="text-lg block rounded-[12px] bg-[#1e2939] pl-4 pt-2 pb-2 w-full hover:bg-[#273346] transition-all text-gray-300"
       href={`/${categoryId}/${testId}/summary`}
     >
       Закінчити тест

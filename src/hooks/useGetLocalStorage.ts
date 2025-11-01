@@ -1,3 +1,3 @@
-export function useGetLocalStorage() {
+export function useGetsessionStorage() {
   return;
 }

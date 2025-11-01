@@ -1,5 +1,5 @@
-export function useSetLocalStorage({ key, answerTask }: { key: number; answerTask?: object }) {
+export function useSetsessionStorage({ key, answerTask }: { key: number; answerTask?: object }) {
   const keyString = key.toString();
 
-  localStorage.setItem(keyString, JSON.stringify(answerTask));
+  sessionStorage.setItem(keyString, JSON.stringify(answerTask));
 }

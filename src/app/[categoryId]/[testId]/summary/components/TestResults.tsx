@@ -5,9 +5,9 @@ export function TestResults({ value }: { value: any }) {
 
   return (
     <div>
-      {!isAnswered && <p className="text-amber-500 text-2xl">Відповіді немає</p>}
-      {isCorrect && <p className="text-green-500 text-2xl">Відповідь правильна</p>}
-      {isWrong && <p className="text-2xl text-red-400">Відповідь неправильна</p>}
+      {!isAnswered && <p className="text-amber-500 text-xl">Відповіді немає</p>}
+      {isCorrect && <p className="text-green-500 text-xl">Відповідь правильна</p>}
+      {isWrong && <p className="text-red-400 text-xl">Відповідь неправильна</p>}
     </div>
   );
 }

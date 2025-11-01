@@ -31,9 +31,9 @@ export function ClientTask({
   const [userAnswer, setUserAnswer] = useState<number>();
   const id = taskId.toString() + "-" + testId;
 
-  function handleLocalStorage(index: number) {
+  function handlesessionStorage(index: number) {
     setUserAnswer(index);
-    localStorage.setItem(
+    sessionStorage.setItem(
       id,
       JSON.stringify({
         index,
@@ -43,7 +43,7 @@ export function ClientTask({
   }
 
   useEffect(() => {
-    const item = localStorage.getItem(id);
+    const item = sessionStorage.getItem(id);
     if (item) {
       const parsed = JSON.parse(item);
       setUserAnswer(parsed.index);
@@ -55,52 +55,51 @@ export function ClientTask({
       <div className="max-w-5xl w-full">
         <div className="flex flex-row">
           <div className="max-w-3xl w-full">
-            <p>
-              Завдання номер: {taskId} з {totalTask}
-            </p>
-            <h1>{currentTask.question}</h1>
-            <div className="w-full  grid grid-cols-2 gap-2">
+            <div className="block w-full text-gray-300 p-4 rounded-[12px] border-transparent bg-[#1e2939]">
+              <p className="text-lg">
+                Завдання номер: {taskId} з {totalTask}
+              </p>
+              <h1 className="text-xl">{currentTask.question}</h1>
+            </div>
+
+            <div className="w-full grid grid-cols-2 gap-2 pt-2">
               {currentTask.answers.map((element: string, index: number) => (
                 <div
                   key={index}
-                  className="w-full relative flex items-center justify-center gap-2 h-40 bg-gray-200 cursor-pointer select-none rounded-[12px] hover:bg-gray-300 transition-all"
+                  className="w-full relative flex items-center justify-center gap-2 h-40 bg-[#1e2939] cursor-pointer select-none rounded-[12px] hover:bg-[#273346] transition-all"
                   onClick={() => {
-                    handleLocalStorage(index);
+                    handlesessionStorage(index);
                   }}
                 >
-                  <label htmlFor={`${element}-answer`} className="text-center">
+                  <label htmlFor={`${element}-answer`} className="text-center text-gray-300 text-lg">
                     {element}
                   </label>
-                  <div className="absolute top-3 right-6 w-6 h-6 rounded-[8px] color-transparent bg-transparent border-gray-400 border ">
-                    {userAnswer === index ? (
-                      <div className="w-2 h-4 border-r-2 absolute right-1.5 top-0.5 border-b-2 border-green-500 rotate-40" />
-                    ) : (
-                      <div></div>
-                    )}
-                  </div>
+                  <div
+                    className="absolute top-3 right-6 w-6 h-6 rounded-[16px] color-transparent bg-transparent border"
+                    style={{
+                      backgroundColor: userAnswer === index ? "#22C55E" : "transparent",
+                      borderColor: userAnswer === index ? "#22C55E" : "#9CA3AF",
+                    }}
+                  ></div>
                 </div>
               ))}
             </div>
             <div className="grid grid-cols-2 w-full pt-2 gap-2">
               {taskId >= 1 && taskId < totalTask && <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />}
               {taskId > 1 && taskId !== totalTask && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
-              {taskId === totalTask && (
-                <div className="invisible" />
-              )}
-              {taskId === totalTask && (
-                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
-              )}
+              {taskId === totalTask && <div className="invisible" />}
+              {taskId === totalTask && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
             </div>
             <div className="w-full pt-2">{taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}</div>
           </div>
 
-          <div>
+          <div className="pl-1 pt-1">
             {Array.from({ length: totalTask }).map((_, index) => (
               <Link
                 key={index}
-                className="px-2 py-0.5 border border-gray-400"
+                className="px-3 py-1.5 bg-[#1e2939] rounded-[12px] text-gray-300 border-[#] text-lg"
                 style={{
-                  backgroundColor: taskId - 1 === index ? "green" : "white",
+                  backgroundColor: taskId - 1 === index ? "#32415b" : "#1e2939",
                 }}
                 href={`/${categoryId}/${testId}/${index + 1}`}
               >

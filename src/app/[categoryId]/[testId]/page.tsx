@@ -13,10 +13,13 @@ export default async function Page({ params }: { params: { categoryId: string; t
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center">
-      <div className="max-w-5xl">
+      <div className="max-w-5xl ">
         <p className="text-2xl">{currentQuiz.title}</p>
         <p className="text-2xl">Кількість питань: {currentQuiz.tasks.length}</p>
-        <Link className="border rounded-[4px] p-1.5" href={`/${categoryId}/${testId}/1`}>
+        <Link
+          className="border rounded-[4px] p-1.5 hover:bg-amber-300 transition-all hover:border-0"
+          href={`/${categoryId}/${testId}/1`}
+        >
           Почати тест{" "}
         </Link>
       </div>

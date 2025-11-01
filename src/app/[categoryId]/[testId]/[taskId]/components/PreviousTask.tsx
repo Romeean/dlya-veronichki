@@ -10,7 +10,10 @@ export function PreviousTask({
   taskId: number;
 }) {
   return (
-    <Link className="rounded-[12px] bg-[#e5e7eb] p-2 w-full" href={`/${categoryId}/${testId}/${taskId - 1}`}>
+    <Link
+      className="text-lg rounded-[12px] bg-[#1e2939] pl-4 pt-2 pb-2 w-full hover:bg-[#273346] transition-all text-gray-300 "
+      href={`/${categoryId}/${testId}/${taskId - 1}`}
+    >
       Попереднє завдання
     </Link>
   );
