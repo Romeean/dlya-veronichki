@@ -11,15 +11,15 @@ export default async function Page({ params }: { params: { categoryId: string; t
   const currentQuiz = quizzes[0];
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center">
+    <div className="w-full min-h-screen flex justify-center items-center text-gray-200">
       <div className="max-w-5xl ">
         <p className="text-2xl">{currentQuiz.title}</p>
         <p className="text-2xl">Кількість питань: {currentQuiz.tasks.length}</p>
         <Link
-          className="border rounded-[4px] p-1.5 hover:bg-amber-300 transition-all hover:border-0"
+          className="block bg-[#1e2939] text-lg rounded-[4px] p-1.5 hover:bg-[#273346] transition-all "
           href={`/${categoryId}/${testId}/1`}
         >
-          Почати тест{" "}
+          Почати тест
         </Link>
       </div>
     </div>

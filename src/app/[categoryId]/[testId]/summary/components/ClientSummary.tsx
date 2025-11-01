@@ -3,9 +3,28 @@ import { useState, useEffect } from "react";
 import { TestResults } from "./TestResults";
 import Image from "next/image";
 
-export function ClientSummary({ testId, totalTask }: { testId: string; totalTask: number }) {
+type ListOfTasks = {
+  id: number;
+  question: string;
+  answers: string[];
+  correctAnswer: string;
+  quizId: number;
+};
+
+type QuizType = {
+  testId: string | null;
+  title: string;
+  tasks: ListOfTasks[];
+  id: number;
+  categoryId: string | null;
+  difficulty: number;
+};
+
+
+export function ClientSummary({ testId, totalTask, quiz }: { testId: string; totalTask: number; quiz: QuizType[] }) {
   const [tasks, setTasks] = useState<Record<string, any>>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  console.log(quiz)
   useEffect(() => {
     const results: Record<string, any> = {};
     for (let index = 1; index <= totalTask; index++) {
@@ -20,7 +39,6 @@ export function ClientSummary({ testId, totalTask }: { testId: string; totalTask
     }
     setTasks(results);
   }, []);
-  console.log(Object.entries(tasks));
 
   const correctAnswers = Object.values(tasks).filter((task: any) => task.index === task.rightAnswer).length;
 
@@ -47,6 +65,9 @@ export function ClientSummary({ testId, totalTask }: { testId: string; totalTask
                 ) : (
                   <Image src="/arrow-ready-to-close.svg" width={30} height={30} alt="close" />
                 )}
+                {
+                  quiz[0].tasks[0].correctAnswer
+                }
               </div>
             </div>
           ))}
