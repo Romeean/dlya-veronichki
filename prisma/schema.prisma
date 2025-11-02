@@ -31,3 +31,14 @@ model Task {
   quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
 
+model UserAnswer {
+  id         Int   @id @default(autoincrement())
+  userAnswer Int?
+  createdAt  DateTime @default(now()) 
+}
+
+model User {
+  login     String  @unique
+  password  String?
+  createdAt DateTime @default(now())
+}
