@@ -39,6 +39,6 @@ model UserAnswer {
 
 model User {
   login     String  @unique
-  password  String?
+  password  String
   createdAt DateTime @default(now())
 }

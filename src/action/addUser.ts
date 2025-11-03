@@ -1,19 +1,20 @@
+"use server"
 import prisma from "@/lib/prisma";
 
-export function addUser({login, password}: {login: string, password: string }){
+export async function addUser(formData: FormData){
+  const login = formData.get("login") as string
+  const password = formData.get("password") as string
   
-  
-  const checkForUser = prisma.user.findUnique({
+  const checkForUser = await prisma.user.findUnique({
     where: { login },
   })
 
-  if(){
-
+  if(checkForUser) {
+    throw new Error("Такий логін існіє")
   }
-  const newUser = prisma.user.create({
-    data: {
-      login: login,
-      password: password
-    }
+  
+  const newUser = await prisma.user.create({
+    data: { login, password }
   });
+
 }
