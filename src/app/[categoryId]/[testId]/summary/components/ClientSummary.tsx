@@ -20,11 +20,10 @@ type QuizType = {
   difficulty: number;
 };
 
-
 export function ClientSummary({ testId, totalTask, quiz }: { testId: string; totalTask: number; quiz: QuizType[] }) {
   const [tasks, setTasks] = useState<Record<string, any>>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  console.log(quiz)
+  console.log(quiz);
   useEffect(() => {
     const results: Record<string, any> = {};
     for (let index = 1; index <= totalTask; index++) {
@@ -65,9 +64,7 @@ export function ClientSummary({ testId, totalTask, quiz }: { testId: string; tot
                 ) : (
                   <Image src="/arrow-ready-to-close.svg" width={30} height={30} alt="close" />
                 )}
-                {
-                  quiz[0].tasks[0].correctAnswer
-                }
+                {quiz[0].tasks[0].correctAnswer}
               </div>
             </div>
           ))}
