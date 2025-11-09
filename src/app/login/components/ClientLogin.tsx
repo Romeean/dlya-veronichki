@@ -1,25 +1,20 @@
-"use client";
-import { addUser } from "@/action/addUser";
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+"use client"
+import { useState } from "react"
+import { login } from "@/action/login"
+import Image from "next/image"
+import Link from "next/link"
 
-
-
-export function AuthClient() {
-  const [isShown, setIsShown] = useState<boolean>(false);
-  const [error, setError ] = useState<string>("");
-
+export function ClientLogin(){
+  const [isShown, setIsShown] = useState<boolean>(false)
   function handleClickShow(){
     setIsShown((prev) => !prev)
   }
-
-  return (
-    <div className="w-full flex justify-center items-center min-h-screen flex-col gap-4">
+  return(
+      <div className="w-full flex justify-center items-center min-h-screen flex-col gap-4">
       <h1 className="text-white text-2xl ">
-        Зарееструйся на найкращу<span className="text-[#e94e77]"> Освітню Платформу</span>
+        З поверненням!
       </h1>
-      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" action={addUser}>
+      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" action={login}>
         <div className="flex flex-col w-full p-2 gap-1">
           <div className="flex flex-col p-2 gap-0.5">
             <label className="text-[#d0d3d7]">Логін</label>
@@ -65,12 +60,11 @@ export function AuthClient() {
             >
               Створити аккаунт
             </button>
-            <Link href={"/login"} className="text-gray-500" >Вже є аккаунт?</Link>
+            <Link href={"/auth"} className="text-gray-500" >Ще немає аккаунту?</Link>
 
           </div>
         </div>
       </form>
     </div>
-  
-  );
+  )
 }
