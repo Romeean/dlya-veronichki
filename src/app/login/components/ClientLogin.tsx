@@ -58,7 +58,7 @@ export function ClientLogin(){
               type="submit"
               className="p-2 rounded-[6px] w-full bg-[#00a6f4] cursor-pointer text-white hover:bg-[#0069a8] transition-all "
             >
-              Створити аккаунт
+              Увійти
             </button>
             <Link href={"/auth"} className="text-gray-500" >Ще немає аккаунту?</Link>
 
