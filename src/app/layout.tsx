@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { AuthProvider } from "@/providers/Auth";
 import "@/styles/globals.css";
 import "@/styles/reset.css";
 
@@ -19,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontMontserrat.className} antialiased`}>{children}</body>
+      <body className={`${fontMontserrat.className} antialiased`}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+        </body>
     </html>
   );
 }
