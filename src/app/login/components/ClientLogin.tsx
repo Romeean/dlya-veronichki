@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { login } from "@/action/login"
+import { authentication } from "@/action/authentication"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -14,7 +14,7 @@ export function ClientLogin(){
       <h1 className="text-white text-2xl ">
         З поверненням!
       </h1>
-      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" action={login}>
+      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" action={authentication}>
         <div className="flex flex-col w-full p-2 gap-1">
           <div className="flex flex-col p-2 gap-0.5">
             <label className="text-[#d0d3d7]">Логін</label>
