@@ -1,9 +1,3 @@
-export default function AccountPage(){
-  
-  return(
-    <div>
-      
-      
-    </div>
-  )
+export default function AccountPage() {
+  return <div></div>;
 }

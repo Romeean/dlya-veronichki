@@ -9,13 +9,8 @@ export function Header() {
         <div className="flex items-center gap-6">
           <nav>
             <Link>
-            <h1>
-              
-
-
-            </h1>
+              <h1></h1>
             </Link>
-
           </nav>
         </div>
       </div>
