@@ -2,6 +2,7 @@
   "name": "dlya-veronichki",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -14,16 +15,19 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.17.1",
+    "@prisma/client": "^7.0.1",
     "@prisma/extension-accelerate": "^2.0.2",
     "bcrypt": "^6.0.0",
+    "hono": "^4.10.7",
+    "js-yaml": "^4.1.1",
     "jsonwebtoken": "^9.0.2",
     "motion": "^12.23.22",
     "next": "15.5.4",
     "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "uuid": "^13.0.0"
+    "uuid": "^13.0.0",
+    "valibot": "^1.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -34,7 +38,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "prisma": "^6.17.1",
+    "prisma": "^7.0.1",
     "tailwindcss": "^4",
     "tsx": "^4.20.6",
     "typescript": "^5"
