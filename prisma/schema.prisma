@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../src/app/generated/prisma"
@@ -11,34 +5,34 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // url      = env("DATABASE_URL")
 }
+
 model Quiz {
-  id            Int     @id @default(autoincrement())
-  title         String
-  testId        String?
-  categoryId    String?
-  difficulty    Int
-  tasks         Task[]   
+  id         Int     @id @default(autoincrement())
+  title      String
+  categoryId String?
+  testId     String?
+  difficulty Int
+  tasks      Task[]
 }
 
 model Task {
   id            Int      @id @default(autoincrement())
   question      String
-  answers       String[]
-  correctAnswer String   @default("nothing")
   quizId        Int
+  correctAnswer String   @default("nothing")
+  answers       String[]
   quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
 
 model UserAnswer {
-  id         Int   @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   userAnswer Int?
-  createdAt  DateTime @default(now()) 
+  createdAt  DateTime @default(now())
 }
 
 model User {
-  login     String  @unique
+  login     String   @unique
   password  String
   createdAt DateTime @default(now())
 }
