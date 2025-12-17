@@ -34,5 +34,13 @@ model UserAnswer {
 model User {
   login     String   @unique
   password  String
+
   createdAt DateTime @default(now())
 }
+
+// model UserResultTest {
+//   mark    Int
+
+
+//   user    User @relation()
+// }
