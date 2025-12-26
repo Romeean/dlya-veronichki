@@ -1,6 +1,8 @@
 generator client {
   provider = "prisma-client"
-  output   = "../src/app/generated/prisma"
+  output   = "../src/generated"
+  binaryTargets = ["native"]
+  importFileExtension = "ts"
 }
 
 datasource db {
