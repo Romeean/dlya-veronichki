@@ -14,7 +14,7 @@ model Quiz {
   title      String
   categoryId String?
   testId     String?
-  difficulty Int
+  difficulty Int 
   tasks      Task[]
 }
 
@@ -40,9 +40,10 @@ model User {
   createdAt DateTime @default(now())
 }
 
-// model UserResultTest {
-//   mark    Int
+model UserResultTest {
+  login  String  @unique // подвязываем ответ под пользователя
+  grade  Int             // оценка которую набрал пользователь 
+  title  String          // название теста
+  id     Int             // идентификатор теста
 
-
-//   user    User @relation()
-// }
+}
