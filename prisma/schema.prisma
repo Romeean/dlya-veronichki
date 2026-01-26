@@ -34,16 +34,22 @@ model UserAnswer {
 }
 
 model User {
-  login     String   @unique
-  password  String
+  id Int     @id @default(autoincrement())
+
+  login     String   
+  password  String 
+
 
   createdAt DateTime @default(now())
 }
 
 model UserResultTest {
-  login  String  @unique // подвязываем ответ под пользователя
   grade  Int             // оценка которую набрал пользователь 
-  title  String          // название теста
-  id     Int             // идентификатор теста
+
+  userId Int
+  quizId Int
+
+
+  @@unique([userId, quizId])
 
 }
