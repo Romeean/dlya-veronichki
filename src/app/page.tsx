@@ -1,16 +1,20 @@
-import { cookies } from "next/headers";
 import { Hero } from "./components/Hero";
+import { Header } from "@/app/components/Header";
 import { SubjectBlock } from "./components/SubjectBlock";
 
 export default async function Home() {
-  const userCookies = await cookies();
-  const userDefiner = userCookies.get("unique-definer");
-  
   return (
-    <div className="flex items-center justify-center min-h-screen flex-col max-h-screen">
-      <Hero />
-      <SubjectBlock /> 
-      
-    </div>
+    <div className="w-full min-h-screen flex flex-col items-center">
+      <div className="w-full max-w-5xl">
+        <Header />
+      </div>
+      <div className="w-full max-w-5xl flex flex-1 items-center">
+          <div className="flex flex-col">
+            <Hero />
+            <SubjectBlock />
+          </div>
+        </div>
+      </div>
+
   );
 }

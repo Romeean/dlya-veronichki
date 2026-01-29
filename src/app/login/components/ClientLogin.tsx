@@ -7,7 +7,6 @@ import { authentication } from "@/action/authentication";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
 
-
 export function ClientLogin() {
   const [isShown, setIsShown] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,23 +15,24 @@ export function ClientLogin() {
     setIsShown((prev) => !prev);
   }
 
-  async function handleAuthentication(event: React.FormEvent){
-    
+  async function handleAuthentication(event: React.FormEvent) {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
-    
+
     try {
       const result = await authentication(formData);
-    } catch(error: any) {
+    } catch (error: any) {
       setError(error.message);
       setTimeout(() => setError(null), 1500);
     }
-
   }
   return (
     <div className="w-full flex justify-center items-center min-h-screen flex-col gap-4">
       <h1 className="text-white text-2xl ">З поверненням!</h1>
-      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" onSubmit={handleAuthentication}>
+      <form
+        className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]"
+        onSubmit={handleAuthentication}
+      >
         <div className="flex flex-col w-full p-2 gap-1">
           <div className="flex flex-col p-2 gap-0.5">
             <label className="text-[#d0d3d7]">Логін</label>
@@ -89,19 +89,18 @@ export function ClientLogin() {
           </div>
         </div>
         <AnimatePresence>
-        {error && (
-          <motion.div 
-            initial    = {{opacity: 0, y: 100}}
-            animate    = {{opacity: 1, y: 100}}
-            exit       = {{opacity: 0, y: 100}}
-            transition = {{duration: 1.5}}
-            className="min-w-4/12 rounded-2xl bg-amber-50 transition-all">
-            <p>
-              {error}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 100 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 1.5 }}
+              className="min-w-4/12 rounded-2xl bg-amber-50 transition-all"
+            >
+              <p>{error}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </form>
     </div>
   );

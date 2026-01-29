@@ -20,5 +20,5 @@ export async function registration(formData: FormData) {
     data: { login, password: hashedPassword },
   });
 
-  return {success: true}
+  return { success: true };
 }

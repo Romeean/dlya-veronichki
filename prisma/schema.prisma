@@ -36,6 +36,7 @@ model UserAnswer {
 model User {
   id Int     @id @default(autoincrement())
 
+  userId    Int
   login     String   
   password  String 
 
@@ -44,12 +45,9 @@ model User {
 }
 
 model UserResultTest {
-  grade  Int             // оценка которую набрал пользователь 
-
+  grade  Int             
   userId Int
   quizId Int
-
-
+  updatedAt DateTime @updatedAt
   @@unique([userId, quizId])
-
 }

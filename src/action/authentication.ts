@@ -21,5 +21,5 @@ export async function authentication(formData: FormData) {
     throw new Error("Невірний пароль");
   }
 
-  return {success: true};
+  return { success: true };
 }

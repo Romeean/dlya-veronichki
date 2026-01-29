@@ -3,7 +3,7 @@
 import { registration } from "@/action/registration";
 import { useState } from "react";
 import { AnimatePresence } from "motion/react";
-import * as motion from "motion/react-client"
+import * as motion from "motion/react-client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,9 +15,8 @@ export function AuthClient() {
 
   function handleClickShow() {
     setIsShown((prev) => !prev);
-
   }
-  async function handleRegistration(event: React.FormEvent){
+  async function handleRegistration(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
 
@@ -25,8 +24,8 @@ export function AuthClient() {
 
     try {
       await registration(formData);
-    } catch(error: any) {
-      setError(error.message)
+    } catch (error: any) {
+      setError(error.message);
       console.log("we have an error", error);
       setTimeout(() => setError(null), 1500);
     }
@@ -93,25 +92,21 @@ export function AuthClient() {
             </Link>
           </div>
         </div>
-      <AnimatePresence>
-        {error && (
-          <motion.div 
-            initial    = {{opacity: 0, y: 100}}
-            animate    = {{opacity: 1, y: 100}}
-            exit       = {{opacity: 0, y: 100}}
-            transition = {{duration: 1.5}}
-            className="min-w-4/12 rounded-2xl bg-amber-50 transition-all">
-            <p>
-              {error}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 100 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 1.5 }}
+              className="min-w-4/12 rounded-2xl bg-amber-50 transition-all"
+            >
+              <p>{error}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </form>
-    {/* почему оператор ?? работает со значениями типа - null как постоянное true */}
-    
-    
+      {/* почему оператор ?? работает со значениями типа - null как постоянное true */}
     </div>
   );
 }
