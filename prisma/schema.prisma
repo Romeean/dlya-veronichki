@@ -11,6 +11,7 @@ datasource db {
 
 model Quiz {
   id         Int     @id @default(autoincrement())
+  
   title      String
   categoryId String?
   testId     String?
@@ -45,6 +46,7 @@ model User {
 }
 
 model UserResultTest {
+  id Int @id @default(autoincrement())
   grade  Int             
   userId Int
   quizId Int
