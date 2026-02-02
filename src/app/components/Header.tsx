@@ -8,6 +8,7 @@ export function Header() {
         <Link href="/account" className="">
           <h1 className="text-white uppercase font-bold">профіль</h1>
         </Link>
+        
       </nav>
     </header>
   );

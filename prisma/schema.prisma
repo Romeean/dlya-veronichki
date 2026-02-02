@@ -11,12 +11,12 @@ datasource db {
 
 model Quiz {
   id         Int     @id @default(autoincrement())
-  
   title      String
   categoryId String?
   testId     String?
   difficulty Int 
   tasks      Task[]
+  result UserResultTest[]
 }
 
 model Task {
@@ -35,21 +35,21 @@ model UserAnswer {
 }
 
 model User {
-  id Int     @id @default(autoincrement())
-
-  userId    Int
-  login     String   
-  password  String 
-
-
-  createdAt DateTime @default(now())
+  id             Int      @id @default(autoincrement())
+  login          String   @unique
+  password       String 
+  userResultTest UserResultTest[]
+  createdAt      DateTime @default(now())
 }
 
 model UserResultTest {
-  id Int @id @default(autoincrement())
+  id     Int @id @default(autoincrement())
   grade  Int             
   userId Int
+  user   User @relation(fields: [userId], references: [id])
   quizId Int
+  quiz   Quiz @relation(fields: [quizId], references: [id])
   updatedAt DateTime @updatedAt
+  
   @@unique([userId, quizId])
 }
