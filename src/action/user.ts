@@ -7,5 +7,8 @@ export async function getUserInformation(login: string) {
     where: { login },
   });
 
+  if(!user){
+    throw new Error("User not found");
+  }
   return user;
 }

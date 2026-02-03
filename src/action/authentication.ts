@@ -16,7 +16,7 @@ export async function authentication(formData: FormData) {
   }
 
   const isValid = await bcrypt.compare(password, user.password);
-
+  
   if (!isValid) {
     throw new Error("Невірний пароль");
   }
