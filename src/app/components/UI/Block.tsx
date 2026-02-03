@@ -1,6 +1,16 @@
 import Link from "next/link";
 
-export function Block({ href, title, subTitle, color }: { href: string; title: string; subTitle: string; color: string }) {
+export function Block({
+  href,
+  title,
+  subTitle,
+  color,
+}: {
+  href: string;
+  title: string;
+  subTitle: string;
+  color: string;
+}) {
   const isHex = color.startsWith("#");
 
   return (

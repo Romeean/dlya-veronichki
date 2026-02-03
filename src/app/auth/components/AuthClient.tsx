@@ -1,11 +1,11 @@
 "use client";
 
 import { registration } from "@/action/registration";
-import { useState } from "react";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export function AuthClient() {
   const [isShown, setIsShown] = useState<boolean>(false);
@@ -36,7 +36,10 @@ export function AuthClient() {
       <h1 className="text-white text-2xl ">
         Зарееструйся на найкращу<span className="text-[#e94e77]"> Освітню Платформу</span>
       </h1>
-      <form className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]" onSubmit={handleRegistration}>
+      <form
+        className="block w-full max-w-[400px] border rounded-[12px] bg-[#1e2939] min-h-[200px]"
+        onSubmit={handleRegistration}
+      >
         <div className="flex flex-col w-full p-2 gap-1">
           <div className="flex flex-col p-2 gap-0.5">
             <label className="text-[#d0d3d7]">Логін</label>

@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import { TestResults } from "./TestResults";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+import { TestResults } from "./TestResults";
 
 type ListOfTasks = {
   id: number;
@@ -20,7 +21,15 @@ type QuizType = {
   difficulty: number;
 };
 
-export function ClientSummary({ testId, totalTask, quiz }: { testId: string; totalTask: number; quiz: QuizType[] }) {
+export function ClientSummary({
+  testId,
+  totalTask,
+  quiz,
+}: {
+  testId: string;
+  totalTask: number;
+  quiz: QuizType[];
+}) {
   const [tasks, setTasks] = useState<Record<string, any>>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
   console.log(quiz);
@@ -39,7 +48,9 @@ export function ClientSummary({ testId, totalTask, quiz }: { testId: string; tot
     setTasks(results);
   }, []);
 
-  const correctAnswers = Object.values(tasks).filter((task: any) => task.index === task.rightAnswer).length;
+  const correctAnswers = Object.values(tasks).filter(
+    (task: any) => task.index === task.rightAnswer,
+  ).length;
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center ">
@@ -53,7 +64,10 @@ export function ClientSummary({ testId, totalTask, quiz }: { testId: string; tot
         )}
         <div className="flex flex-col gap-4">
           {Object.entries(tasks).map(([key, value]) => (
-            <div className="transition flex flex-row gap-4 rounded-[12px] p-4 hover:translate-x-1.5 bg-[#1e2939]" key={key}>
+            <div
+              className="transition flex flex-row gap-4 rounded-[12px] p-4 hover:translate-x-1.5 bg-[#1e2939]"
+              key={key}
+            >
               <p className="text-xl text-[#bec3ca]">Завдання номер {key}: </p>
               <TestResults key={key} value={value} />
               <div className="flex-grow" />

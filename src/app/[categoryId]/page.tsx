@@ -1,4 +1,5 @@
 import { getQuizzes } from "@/action/getQuizzes";
+
 import { ClientCatalogOfTests } from "./components/ClientCatalogOfTests";
 
 export default async function Page({ params }: { params: { categoryId: string } }) {

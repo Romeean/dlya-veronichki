@@ -1,5 +1,6 @@
-import { Hero } from "./components/Hero";
 import { Header } from "@/app/components/Header";
+
+import { Hero } from "./components/Hero";
 import { SubjectBlock } from "./components/SubjectBlock";
 
 export default async function Home() {
@@ -9,12 +10,11 @@ export default async function Home() {
         <Header />
       </div>
       <div className="w-full max-w-5xl flex flex-1 items-center">
-          <div className="flex flex-col">
-            <Hero />
-            <SubjectBlock />
-          </div>
+        <div className="flex flex-col">
+          <Hero />
+          <SubjectBlock />
         </div>
       </div>
-
+    </div>
   );
 }

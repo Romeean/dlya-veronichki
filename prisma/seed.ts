@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+
 async function main() {
   // математический квиз
   const quiz = await prisma.quiz.create({

@@ -3,12 +3,12 @@ import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 
-async function CreateHTTPOnlyCoolie(value: string){
+async function CreateHTTPOnlyCoolie(value: string) {
   (await cookies()).set("user-name", value, {
     httpOnly: true,
     path: "/",
-    maxAge: 60 * 60 * 24 * 7, 
-  })
+    maxAge: 60 * 60 * 24 * 7,
+  });
 }
 export async function registration(formData: FormData) {
   const login = formData.get("login") as string;
@@ -27,9 +27,9 @@ export async function registration(formData: FormData) {
   const newUser = await prisma.user.create({
     data: { login, password: hashedPassword },
   });
-  
-  if(newUser){
-    CreateHTTPOnlyCoolie(login)
+
+  if (newUser) {
+    CreateHTTPOnlyCoolie(login);
   }
 
   return { success: true };

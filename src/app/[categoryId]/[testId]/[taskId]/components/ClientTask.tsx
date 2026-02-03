@@ -1,9 +1,10 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
+import { FinishTest } from "./FinishTest";
 import { NextTask } from "./NextTask";
 import { PreviousTask } from "./PreviousTask";
-import { FinishTest } from "./FinishTest";
-import Link from "next/link";
 
 type CurrentTask = {
   question: string;
@@ -71,7 +72,10 @@ export function ClientTask({
                     handlesessionStorage(index);
                   }}
                 >
-                  <label htmlFor={`${element}-answer`} className="text-center text-gray-300 text-lg">
+                  <label
+                    htmlFor={`${element}-answer`}
+                    className="text-center text-gray-300 text-lg"
+                  >
                     {element}
                   </label>
                   <div
@@ -85,12 +89,20 @@ export function ClientTask({
               ))}
             </div>
             <div className="grid grid-cols-2 w-full pt-2 gap-2">
-              {taskId >= 1 && taskId < totalTask && <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />}
-              {taskId > 1 && taskId !== totalTask && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
+              {taskId >= 1 && taskId < totalTask && (
+                <NextTask categoryId={categoryId} testId={testId} taskId={taskId} />
+              )}
+              {taskId > 1 && taskId !== totalTask && (
+                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
+              )}
               {taskId === totalTask && <div className="invisible" />}
-              {taskId === totalTask && <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />}
+              {taskId === totalTask && (
+                <PreviousTask categoryId={categoryId} testId={testId} taskId={taskId} />
+              )}
             </div>
-            <div className="w-full pt-2">{taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}</div>
+            <div className="w-full pt-2">
+              {taskId === totalTask && <FinishTest categoryId={categoryId} testId={testId} />}
+            </div>
           </div>
 
           <div className="pl-1 pt-1">

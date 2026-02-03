@@ -1,5 +1,6 @@
-import { ClientSummary } from "./components/ClientSummary";
 import { getQuizzes } from "@/action/getQuizzes";
+
+import { ClientSummary } from "./components/ClientSummary";
 
 export default async function Page({ params }: { params: { testId: string } }) {
   const awaitedParams = await params;

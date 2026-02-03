@@ -1,7 +1,12 @@
 import { getQuizzes } from "@/action/getQuizzes";
+
 import { ClientTask } from "./components/ClientTask";
 
-export default async function Page({ params }: { params: { categoryId: string; testId: string; taskId: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: { categoryId: string; testId: string; taskId: string };
+}) {
   const awaitedParams = await params;
   const testId = awaitedParams.testId;
   const quizzes = await getQuizzes({ testId });

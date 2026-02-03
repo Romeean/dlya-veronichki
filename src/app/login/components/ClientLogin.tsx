@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
 import { authentication } from "@/action/authentication";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export function ClientLogin() {
   const [isShown, setIsShown] = useState<boolean>(false);
