@@ -1,16 +1,11 @@
   "use server";
   import prisma from "@/lib/prisma";
   import bcrypt from "bcrypt";
-  import { cookies } from "next/headers";
   import { redirect } from "next/navigation";
+  import { createHTTPOnlyCookie } from "@/app/utils/cookies"; 
+import { revalidatePath } from "next/cache";
 
-  async function CreateHTTPOnlyCoolie(value: string) {
-    (await cookies()).set("user-name", value, {
-      httpOnly: true,
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
-  }
+  
   export async function registration(formData: FormData) {
     const login = formData.get("login") as string;
     const password = formData.get("password") as string;
@@ -30,7 +25,8 @@
     });
 
     if (newUser) {
-      await CreateHTTPOnlyCoolie(login);
+      await createHTTPOnlyCookie(login);
+      revalidatePath("/")
       redirect("/")
     }
 

@@ -2,6 +2,9 @@
 
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { createHTTPOnlyCookie } from "@/app/utils/cookies";
 
 export async function authentication(formData: FormData) {
   const login = formData.get("login") as string;
@@ -20,6 +23,11 @@ export async function authentication(formData: FormData) {
   if (!isValid) {
     throw new Error("Невірний пароль");
   }
-
-  return { success: true };
+  if(isValid){
+    await createHTTPOnlyCookie(login);
+    revalidatePath("/")
+    redirect("/")
+  }
+  
+  return { success: true, };
 }
