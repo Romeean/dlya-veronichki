@@ -1,6 +1,7 @@
   import Link from "next/link";
   import { cookies } from "next/headers";
   import { getUserInformation } from "@/action/user";
+  import { logout } from "@/action/logout";
 
   export async function Header() {
     const cookieStore = await cookies();
@@ -8,8 +9,8 @@
     let user = undefined;
     if(userName){
       user = await getUserInformation(userName);
-      
     }
+
 
     return (
       <header className="flex items-center p-3">
@@ -22,9 +23,10 @@
                 <h1 className="text-white uppercase font-bold">Account</h1>
               </Link>
               <div><p className="text-[white] font-bold">|</p></div>
-              <Link href="/account">
-                <h1 className="text-white uppercase font-bold">LogOut</h1>
-              </Link>
+              
+              <form action={logout}>
+                <button type="submit" className="text-white uppercase font-bold">LogOut</button>
+              </form>
             </div>
           ) : (
             <div className="flex flex-row gap-2">
