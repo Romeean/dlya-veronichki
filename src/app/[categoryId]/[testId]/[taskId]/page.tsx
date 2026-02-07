@@ -7,17 +7,20 @@ export default async function Page({
 }: {
   params: { categoryId: string; testId: string; taskId: string };
 }) {
+
   const awaitedParams = await params;
   const testId = awaitedParams.testId;
   const quizzes = await getQuizzes({ testId });
   const taskId = parseInt(awaitedParams.taskId, 10);
   const currentTask = quizzes[0].tasks[taskId - 1];
-  const totalTask = quizzes[0].tasks.length;
-  const rightAnswer = quizzes[0].tasks[taskId - 1].correctAnswer;
-
+  
   if (!currentTask) {
     return <div>Такого тесту не існує</div>;
   }
+  
+  const totalTask = quizzes[0].tasks.length;
+  const rightAnswer = quizzes[0].tasks[taskId - 1].correctAnswer;
+
 
   return (
     <ClientTask
