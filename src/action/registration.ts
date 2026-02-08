@@ -1,8 +1,8 @@
   "use server";
-  import prisma from "@/lib/prisma";
-  import bcrypt from "bcrypt";
-  import { redirect } from "next/navigation";
-  import { createHTTPOnlyCookie } from "@/app/utils/cookies"; 
+import prisma from "@/lib/prisma";
+import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
+import { createHTTPOnlyCookie } from "@/app/utils/cookies"; 
 import { revalidatePath } from "next/cache";
 
   
@@ -12,7 +12,7 @@ import { revalidatePath } from "next/cache";
 
     const user = await prisma.user.findUnique({
       where: { login },
-    });
+    }); 
 
     if (user) {
       throw new Error("Користувач з таким логіном вже існує");

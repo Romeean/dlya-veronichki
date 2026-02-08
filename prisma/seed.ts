@@ -177,8 +177,16 @@ async function main() {
     },
   });
 
+  await prisma.userResultTest.create({
+    data: {
+      quiz: 
+      quizId: 
+
+    }
+  })
   console.log("✅ Данные успешно добавлены!");
 }
+
 
 main()
   .catch((e) => console.error(e))

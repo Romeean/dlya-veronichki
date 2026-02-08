@@ -33,12 +33,11 @@ export function ClientSummary({
   const [tasks, setTasks] = useState<Record<string, any>>({});
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const resultInformation = 
 
 
   console.log(quiz);
   useEffect(() => {
-    const results: Record<string, any> = {};
+    const results: Record<string, any> = {}; // очень расплывчато, переделать! (any type).
     for (let index = 1; index <= totalTask; index++) {
       let pathToTest = `${index.toString() + "-" + testId}`;
       const test = sessionStorage.getItem(pathToTest);

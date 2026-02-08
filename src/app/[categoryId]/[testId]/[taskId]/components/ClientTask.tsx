@@ -32,13 +32,12 @@ export function ClientTask({
   const [userAnswer, setUserAnswer] = useState<number>();
   const id = taskId.toString() + "-" + testId;
 
-  function handlesessionStorage(index: number) {
+  function handleSessionStorage(index: number) {
     setUserAnswer(index);
     sessionStorage.setItem(
       id,
       JSON.stringify({
         index,
-        rightAnswer: parseInt(rightAnswer),
       }),
     );
   }
@@ -69,7 +68,7 @@ export function ClientTask({
                   key={index}
                   className="w-full relative flex items-center justify-center gap-2 h-40 bg-[#1e2939] cursor-pointer select-none rounded-[12px] hover:bg-[#273346] transition-all"
                   onClick={() => {
-                    handlesessionStorage(index);
+                    handleSessionStorage(index);
                   }}
                 >
                   <label

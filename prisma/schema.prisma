@@ -22,9 +22,10 @@ model Quiz {
 model Task {
   id            Int      @id @default(autoincrement())
   question      String
-  quizId        Int
-  correctAnswer String   @default("nothing")
+  correctAnswer String   @default("unknown")
   answers       String[]
+
+  quizId        Int
   quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
 
