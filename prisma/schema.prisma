@@ -12,11 +12,11 @@ datasource db {
 model Quiz {
   id         Int     @id @default(autoincrement())
   title      String
-  categoryId String?
-  testId     String?
+  categoryId String
+  testId     String
   difficulty Int 
   tasks      Task[]
-  result UserResultTest[]
+  result     UserResultTest[]
 }
 
 model Task {
@@ -24,14 +24,15 @@ model Task {
   question      String
   correctAnswer String   @default("unknown")
   answers       String[]
-
   quizId        Int
   quiz          Quiz     @relation(fields: [quizId], references: [id])
 }
 
 model UserAnswer {
-  id         Int      @id @default(autoincrement())
-  userAnswer Int?
+  id              Int      @id @default(autoincrement())
+  userAnswer      Int?
+  testId          Int
+  userResultTest  UserResultTest @relation(fields: [testId], references: [id])
   createdAt  DateTime @default(now())
 }
 
@@ -44,13 +45,15 @@ model User {
 }
 
 model UserResultTest {
-  id     Int @id @default(autoincrement())
+  id     Int  @id @default(autoincrement())
   grade  Int             
   userId Int
   user   User @relation(fields: [userId], references: [id])
   quizId Int
   quiz   Quiz @relation(fields: [quizId], references: [id])
+  answers UserAnswer[]
+
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
   @@unique([userId, quizId])
 }
